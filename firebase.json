@@ -1,0 +1,21 @@
+{
+  "hosting": {
+    "public": "public",
+    "site" : "pixidesk-4637f",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites" : [
+      {
+        "source":"**",
+        "function":"nextServer"
+      }
+    ]
+  },
+  "functions": {
+    "source" : ".",
+    "runtime": "nodejs16"
+  }
+}

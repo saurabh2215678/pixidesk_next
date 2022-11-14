@@ -1,0 +1,314 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "Google Sans";
+  src: local("Google Sans Medium"), local("GoogleSans-Medium"),
+    url("/fonts/GoogleSans-Medium.woff2") format("woff2"),
+    url("/fonts/GoogleSans-Medium.woff") format("woff");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Google Sans";
+  src: local("Google Sans Bold"), local("GoogleSans-Bold"),
+    url("/fonts/GoogleSans-Bold.woff2") format("woff2"),
+    url("/fonts/GoogleSans-Bold.woff") format("woff");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+body {
+  @apply bg-gray-900 text-white overflow-x-hidden;
+  cursor: none;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+
+  @media (min-width: 768px) {
+    font-size: 14px;
+  }
+
+  @media (min-width: 1024px) {
+    font-size: 15px;
+  }
+
+  @media (min-width: 1536px) {
+    font-size: 18px;
+  }
+  @media (min-width: 1800px) {
+    font-size: 20px;
+  }
+  @media (min-width: 2000px) {
+    font-size: 22px;
+  }
+}
+
+:root {
+  color-scheme: dark;
+}
+
+::-moz-selection {
+  color: white;
+  background: black;
+}
+
+::selection {
+  color: white;
+  background: black;
+}
+
+.section-container {
+  @apply 2xl:container xl:px-20 md:px-12 px-4 mx-auto;
+}
+
+a {
+  cursor: none !important;
+}
+
+.typed-cursor {
+  font-size: 2rem;
+}
+
+.outer-menu {
+  &.menu-visible {
+    .hamburger {
+      > div {
+        transform: rotate(135deg);
+        &:before {
+          top: 0;
+          transform: rotate(90deg);
+        }
+        &:after {
+          top: 0;
+          transform: rotate(90deg);
+          opacity: 0;
+        }
+      }
+    }
+    .menu {
+      pointer-events: auto;
+      visibility: visible !important;
+      backdrop-filter: blur(0.625rem);
+      -webkit-backdrop-filter: blur(0.625rem);
+      > div {
+        transform: scale(1);
+        transition-duration: 0.75s;
+        > div {
+          opacity: 1;
+          transition: opacity 0.4s ease 0.4s;
+        }
+      }
+    }
+    &:hover {
+      .hamburger {
+        > div {
+          transform: rotate(225deg);
+        }
+      }
+    }
+  }
+  .hamburger {
+    z-index: 1;
+    backface-visibility: hidden;
+
+    > div {
+      height: 0.125rem;
+      transition: all 0.4s ease;
+      -webkit-box-pack: center;
+      &:before,
+      &:after {
+        content: "";
+        z-index: 1;
+        position: absolute;
+        left: 0;
+        width: 100%;
+        top: -0.5rem;
+        height: 0.125rem;
+        background: inherit;
+        transition: all 0.4s ease;
+      }
+      &:after {
+        top: 0.5rem;
+      }
+    }
+  }
+  .menu {
+    backface-visibility: hidden;
+    outline: 0.0625rem solid transparent;
+    > div {
+      width: 250vw;
+      height: 250vw;
+      transform: scale(0);
+      will-change: transform;
+      border-radius: 50%;
+      transition: all 0.4s ease;
+      backface-visibility: hidden;
+      background: rgba(0, 0, 0, 0.5);
+      @supports not (backdrop-filter: blur(1px)) {
+        background: rgba(0, 0, 0, 0.8);
+      }
+
+      > div {
+        max-width: 90vw;
+        transition: opacity 0.4s ease;
+      }
+      ul {
+        li {
+          a {
+            background: linear-gradient(
+              90deg,
+              #ffffff 0%,
+              #ffffff 50%,
+              #6dd5ed 51%,
+              #2193b0 100%
+            );
+            background-size: 200% 100%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+
+            &:hover,
+            &:focus {
+              background-position: 100% 0;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.progress {
+  height: 0.1875rem;
+
+  .progress-bar {
+    height: 0.2rem;
+    transform-origin: left;
+    will-change: transform;
+    transform: scaleX(0);
+    @apply w-full bg-white;
+  }
+}
+
+.text-gradient {
+  background: linear-gradient(90deg, #6dd5ed 0%, #2193b0 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-strong {
+  background: linear-gradient(
+    90deg,
+    #ffffff 0%,
+    #ffffff 50%,
+    #6dd5ed 51%,
+    #2193b0 100%
+  );
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.project-wrapper::-webkit-scrollbar {
+  display: none;
+}
+
+.skill {
+  padding-right: 1.25rem !important;
+  padding-bottom: 1.25rem !important;
+}
+
+footer {
+  background: url("/footer-bg.svg"),
+    linear-gradient(
+      153.86deg,
+      #02494c 0%,
+      #016877 15.69%,
+      #0d576d 48.9%,
+      #004865 95.52%
+    );
+}
+
+.section-heading {
+  @apply md:text-5xl text-4xl font-bold text-gradient w-fit;
+}
+
+.section-title-sm {
+  @apply uppercase tracking-widest text-gray-200 text-sm;
+}
+foreignObject img { object-fit: contain; }
+.head_logo { transform: translateY(-24px); }
+.model_backdrop { position: absolute; left: 0; top: 0; width: 100%; height: 100%; backdrop-filter: blur(0.6rem); transform: scale(0); border-radius: 50%; background-color: #00000065; transition: all ease 0.5s;}
+.model_content_wrapper { margin: auto; padding: 1.6rem; pointer-events: none; position: relative; transform: scale(0); transition: all ease 0.5s; transition-delay: 0.1s; }
+.model_content { pointer-events: all; background-color: #fff; color: #000; padding: 2rem; border-radius: 0.6rem; position: relative; }
+.lets_talk_modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 999; display: flex; overflow: auto; pointer-events: none; }
+.lets_talk_modal.active{pointer-events: all;    backdrop-filter: blur(0.6rem);}
+.lets_talk_modal.active .model_backdrop{transform: scale(1); border-radius: 0; background-color: transparent;}
+.lets_talk_modal.active .model_content_wrapper{transform: scale(1);}
+.mouse_cursor { z-index: 9999; }
+span.close_modal { display: flex; position: absolute; right: 0; top: 0; width: 2.5rem; height: 2.5rem; padding: 0.8rem; }
+.input_box input, .input_box textarea{ padding-top: 0.8rem; padding-inline: 0.1rem; background-color: #fff; border: 1px solid transparent; border-bottom-color: #c5c5c5; height: 2.5rem; width: 100%; }
+.input_box { position: relative; }
+.input_box label { position: absolute; left: 0; top: 0; height: 100%; display: flex; align-items: center; justify-content: flex-start; pointer-events: none; font-size: 1.2rem; color: #898989; transition: all ease 0.2s; }
+.input_box input::placeholder, .input_box textarea::placeholder { font-size: 0; color: transparent; opacity: 0;}
+.input_box input:focus, .input_box textarea:focus{outline: none;}
+.input_box input:focus~label, .input_box input:not(:placeholder-shown)~label, .input_box textarea:focus~label, .input_box textarea:not(:placeholder-shown)~label { transform: scale(0.9) translateY(-0.9rem); }
+.react-tel-input { font-family: inherit!important; }
+.react-tel-input .form-control {    padding-top: 0.8rem; border-color: transparent!important; border-bottom-color: #c5c5c5!important; height: 2.5rem!important; border-radius: 0!important; letter-spacing: initial!important; font-size: 1rem!important; padding-left: 2rem!important; }
+.react-tel-input .selected-flag { border-radius: 0!important; width: 2rem; background: transparent!important; }
+.react-tel-input .flag-dropdown, .react-tel-input .flag-dropdown.open {    top: 0.8rem!important; border-radius: 0!important; border: none!important; background: transparent!important; }
+.react-tel-input .selected-flag .arrow { display: none!important; }
+.flag.\30 { background-color: #cfcfcf; }
+.react-tel-input .form-control::placeholder{color: transparent; opacity: 0; transition: all ease 0.2s;}
+.react-tel-input.focused .form-control::placeholder{color: #d3d3d3; opacity: 1;}
+.react-tel-input .selected-flag>div{pointer-events: none;}
+.react-tel-input .special-label { display: flex !important; padding: 0 !important; pointer-events: none !important; font-size: 1.2rem !important; color: #898989 !important; transition: all ease 0.2s !important; left: 0 !important; top: 0 !important; height: 100% !important; background-color: transparent !important; align-items: center; justify-content: flex-start; transform: scale(0.9) translateY(-0.9rem) !important; }
+.isEmpty.react-tel-input .special-label { transform: none!important; }
+.isEmpty.focused.react-tel-input .special-label {transform: scale(0.9) translateY(-0.9rem) !important;}
+.react-tel-input .flag-dropdown{transition: all ease 0.2s;}
+.isEmpty.react-tel-input .flag-dropdown { opacity: 0; }
+.react-tel-input .form-control::placeholder{color: transparent!important; opacity: 0!important;}
+.isEmpty.focused.react-tel-input .flag-dropdown{opacity: 1;}
+.input_box textarea { height: initial; padding-inline: 0.3rem; }
+.input_box textarea+label{height: 2.5rem;}
+.react-tel-input .selected-flag:before { content: ""; position: absolute; width: 1rem; height: 1rem; top: 50%; left: 50%; transform: translate(calc(-50% - 0.2rem), -50%) scale(1.8); opacity: 0; background-color: #000000a9; border-radius: 50%; transition: all ease 0.5s; pointer-events: none; }
+.react-tel-input .selected-flag:focus:before{opacity: 1; animation: grow 2s ease-in-out infinite alternate;}
+.input_box, .react-tel-input { margin-bottom: 1.5rem; }
+.input_box:last-child { margin-bottom: 0; }
+.model_content { display: flex; }
+.modle_left, .model_right { width: 50%; }
+.react-tel-input .form-control { width: 100%; }
+.search-box { width: calc(100% - 2.5rem); background-color: #fff; }
+.react-tel-input .country-list .country-name { font-size: 0.9rem; }
+.react-tel-input .form-control{min-width: 100%;}
+/* width */
+.country-list::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+.country-list::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+.country-list::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Handle on hover */
+.country-list::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+@-webkit-keyframes grow{
+  0%{transform: translate(calc(-50% - 0.2rem), -50%) scale(1.8);}
+  50%{transform: translate(calc(-50% - 0.2rem), -50%) scale(1.4);}
+  10%{transform: translate(calc(-50% - 0.2rem), -50%) scale(1.8);}
+}
