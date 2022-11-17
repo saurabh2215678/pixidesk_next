@@ -306,7 +306,8 @@ span.close_modal { display: flex; position: absolute; right: 0; top: 0; width: 2
 .country-list::-webkit-scrollbar-thumb:hover {
   background: #555;
 }
-
+.model_right h2 { font-size: 1.6rem; margin-bottom: 1rem; }
+.model_right p { font-size: 1rem; margin-bottom: 1.5rem; }
 @-webkit-keyframes grow{
   0%{transform: translate(calc(-50% - 0.2rem), -50%) scale(1.8);}
   50%{transform: translate(calc(-50% - 0.2rem), -50%) scale(1.4);}

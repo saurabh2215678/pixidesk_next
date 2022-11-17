@@ -3,6 +3,8 @@ import PhoneInput from 'react-phone-input-2';
 import 'react-phone-input-2/lib/style.css';
 import Lottie from "lottie-react";
 import groovyWalkAnimation from "../../public/letstalk.json";
+import Image from "next/image";
+import Button, { ButtonTypes }  from "../common/mainButton";
 
 interface Props {
     isOpened: boolean,
@@ -14,9 +16,13 @@ interface InputProps {
     label?: string,
     value?: string,
     className?: string,
-    onChange?: any
+    onChange?: any,
+    required?: boolean
 }
-const Input = ({type, label, value, className, onChange}:InputProps) => {
+interface LooseObject {
+    [key: string]: any
+}
+const Input = ({type, label, value, className, onChange, required}:InputProps) => {
     return(
         <div className="input_box">
             <input 
@@ -24,7 +30,7 @@ const Input = ({type, label, value, className, onChange}:InputProps) => {
             value={value ? value : ''} 
             className={className ? className : ''} 
             placeholder={label ? label : 'label'}
-            onChange={onChange}/>
+            onChange={onChange} required={required}/>
             <label>{label ? label : 'label'}</label>
         </div>
     );
@@ -42,7 +48,7 @@ const TextArea = ({label, value, className, onChange}:InputProps) => {
     );
 }
 
-const LetsTalkModal = React.memo((props:Props) => {
+const LetsTalkModal = ((props:Props) => {
     const {isOpened, setIsOpened} = props;
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
@@ -93,29 +99,40 @@ const LetsTalkModal = React.memo((props:Props) => {
         }, 10);
     }
 
+    const handelSubmit = (e:any) => {
+        const formData:LooseObject = {};
+        name && (formData.name = name);
+        email && (formData.email = email);
+        phone && (formData.phone = phone);
+        comment && (formData.comment = comment);
+        console.log(formData);
+    }
+
     return (
         <div className={`lets_talk_modal ${isOpened ? 'active' : ''}`}>
             <div className="model_backdrop" onClick={()=>setIsOpened(false)}></div>
             <div className="model_content_wrapper">
                 <div className="model_content">
-                    <span className="close_modal" onClick={()=>setIsOpened(false)}><img src="/corss.svg" alt="" /></span>
+                    <span className="close_modal" onClick={()=>setIsOpened(false)}><Image src="/corss.svg" width="100%" height="100%" alt="close" /></span>
                     <div className="modle_left">
                         <Lottie animationData={groovyWalkAnimation} loop={true} />
                     </div>
                     <div className="model_right">
                         <h2>Feel Free to talk to me</h2>
                         <p>I will contact you soon.</p>
-                        <form>
+                        <form onSubmit={handelSubmit}>
                             <Input
                                 value={name}
                                 onChange={(evt : any) =>setName(evt.target.value)}
                                 label="Name"
+                                required={true}
                             />
                             <Input
                                 value={email}
                                 onChange={(evt : any) =>setEmail(evt.target.value)}
                                 label="Email"
                                 type="email"
+                                required={true}
                             />
                             <PhoneInput
                             containerClass={`${!phone ? 'isEmpty' :''} ${phoneFocused ? 'focused' : ''}`}
@@ -137,9 +154,15 @@ const LetsTalkModal = React.memo((props:Props) => {
                                 label="Comment"
                             />
                             
-                            <button
+                            {/* <button
                             className="py-2 px-7 font-medium rounded text-base md:text-xl tracking-wide link duration-300 flex items-center"
-                            type="submit">Submit</button>
+                            type="submit">Submit</button> */}
+                            <Button
+                                classes="ml-3"
+                                type={ButtonTypes.PRIMARY}
+                                name="Send"
+                                onClick={()=>{}}
+                                ></Button>
                         </form>
                     </div>
                 </div>
