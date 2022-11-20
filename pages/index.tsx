@@ -29,11 +29,17 @@ export interface IDesktop {
   isDesktop: boolean;
 }
 
+export interface ModelOpened {
+  modelOpened?: boolean;
+  setModelOpened?: Function
+}
+
 export default function Home() {
   gsap.registerPlugin(ScrollTrigger);
   gsap.config({ nullTargetWarn: false });
 
   const [isDesktop, setisDesktop] = useState(true);
+  const [modelOpened, setModelOpened] = useState(false);
 
   let timer: NodeJS.Timeout = null;
 
@@ -73,14 +79,14 @@ export default function Home() {
         <Cursor isDesktop={isDesktop} />
         <main className="flex-col flex">
           {renderBackdrop()}
-          <HeroSection />
+          <HeroSection modelOpened={modelOpened} setModelOpened={setModelOpened}/>
           <AboutSection />
           <ProjectsSection isDesktop={isDesktop} />
           <QuoteSection />
           <SkillsSection />
           <TimelineSection isDesktop={isDesktop} />
           <CollaborationSection />
-          <Footer />
+          <Footer setModelOpened={setModelOpened} />
         </main>
         {/* <Scripts /> */}
       </Layout>

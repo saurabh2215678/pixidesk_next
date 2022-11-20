@@ -6,6 +6,7 @@ import { gsap, Linear } from "gsap";
 import Button, { ButtonTypes } from "../common/button";
 import HeroImage from "./hero-image";
 import LetsTalkModal from "./lets_talk_modal";
+import { ModelOpened } from "../../pages";
 
 const HERO_STYLES = {
   SECTION:
@@ -17,11 +18,9 @@ const HERO_STYLES = {
   TYPED_SPAN: "text-xl sm:text-2xl md:text-4xl seq",
 };
 
-const HeroSection = React.memo(() => {
+const HeroSection = React.memo(({ modelOpened, setModelOpened }: ModelOpened) => {
   const typedSpanElement: MutableRefObject<HTMLSpanElement> = useRef(null);
   const targetSection: MutableRefObject<HTMLDivElement> = useRef(null);
-
-  const [modelOpened, setModelOpened] = useState(false);
 
   const initTypeAnimation = (
     typedSpanElement: MutableRefObject<HTMLSpanElement>

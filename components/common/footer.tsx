@@ -1,8 +1,9 @@
-import { EMAIL, MENULINKS, SOCIAL_LINKS } from "../../constants";
+import {MENULINKS, SOCIAL_LINKS } from "../../constants";
 import Image from "next/image";
 import Button, { ButtonTypes } from "./button";
+import { ModelOpened } from "../../pages";
 
-const Footer = () => {
+const Footer = ({ setModelOpened }: ModelOpened) => {
   const renderSocialIcons = (): React.ReactNode => {
     return Object.keys(SOCIAL_LINKS).map((el: keyof typeof SOCIAL_LINKS) => (
       <a
@@ -34,10 +35,16 @@ const Footer = () => {
         ></Button>
         <Button
           classes="ml-3"
+          type={ButtonTypes.PRIMARY}
+          name="Let's Talk"
+          onClick={()=>setModelOpened(true)}
+        ></Button>
+        {/* <Button
+          classes="ml-3"
           type={ButtonTypes.WHITE}
           name="Let's Talk"
           href={`mailto: ${EMAIL}`}
-        ></Button>
+        ></Button> */}
       </div>
       <h2 className="text-center text-sm sm:text-base mt-8">
         Designed and Developed with ❤️ by Saurabh
