@@ -18,7 +18,7 @@ const Button = ({
   type: ButtonTypes;
   onClick?: () => void;
   name: string;
-  href: string;
+  href?: string;
   classes?: string;
   [key: string]: string | (() => void);
 }) => {

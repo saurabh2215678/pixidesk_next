@@ -313,3 +313,30 @@ span.close_modal { display: flex; position: absolute; right: 0; top: 0; width: 2
   50%{transform: translate(calc(-50% - 0.2rem), -50%) scale(1.4);}
   10%{transform: translate(calc(-50% - 0.2rem), -50%) scale(1.8);}
 }
+
+.model_content.flex_column { flex-direction: column; text-align: center;}
+.modal_anim { width: 23rem; }
+h4.thank_you_heading { margin-top: -4rem; }
+h4.please_wait_text { margin-top: -2rem; font-size: 1.5rem; padding-bottom: 1.5rem; }
+.thank_you_anim { margin-top: -5rem; }
+
+/* Change the white to any color */
+.react-tel-input input.form-control:-webkit-autofill, 
+input:-webkit-autofill, 
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px white inset !important;
+  -webkit-text-fill-color: #000;
+  border: none;
+  border-bottom: 1px solid #CACACA;
+}
+
+@media (max-width: 767px){
+  .modle_left{display: none;}
+  .model_right{width: 100%;}
+  section.w-full.relative.select-none.tall\:py-36.py-48.section-container.flex.flex-col,
+  section#home {
+    overflow: hidden;
+}
+}

@@ -11,6 +11,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "firebase": "^9.14.0",
     "firebase-admin": "^11.2.0",
     "firebase-functions": "^4.0.2",
     "gsap": "3.8.0",

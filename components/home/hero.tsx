@@ -100,7 +100,6 @@ const HeroSection = React.memo(() => {
           type={ButtonTypes.PRIMARY}
           name="Let's Talk"
           onClick={()=>setModelOpened(true)}
-          href={`#`}
         ></Button>
       </div>
     </div>
